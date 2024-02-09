@@ -1,7 +1,11 @@
 import { expect } from 'chai';
 import supertest from 'supertest';
 import mongoose from "mongoose";
-import Users from '../../src/dao/dbManager/users.db.js';
+//import configs from "../../src/config.js";
+await mongoose.connect("mongodb+srv://eleonoratubio:jT0Z0SKpSILu6qvz@cluster0.4gfsjbp.mongodb.net/tests?retryWrites=true&w=majority");
+//await mongoose.connect(configs.mongoUrl)
+
+//import Users from '../../src/dao/dbManager/users.db.js';
 import usersModel from '../../src/dao/dbManager/models/users.model.js';
 
 //let usersDao;
@@ -9,15 +13,17 @@ const requester = supertest('http://localhost:8080');
 
 describe('Testing del módulo sessions', () => {
     let cookie;
-    // after(async () => {
-    //     try {
-    //         await mongoose.connection.collections.users.drop();   
-    //     } catch (error) {
-    //         console.log(error);
-    //     }
-    // });
+    after(async () => {
+        try {
+            await mongoose.connection.collections.users.drop(); 
+            mongoose.connection.close()
+
+        } catch (error) {
+            console.log(error);
+        }
+    });
     // before(() => {
-    //     usersDao = new Users();
+    //    const usersDao = new Users();
     // });
 
     // before(async () => {
