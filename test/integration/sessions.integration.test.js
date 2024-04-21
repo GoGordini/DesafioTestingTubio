@@ -1,9 +1,9 @@
 import { expect } from 'chai';
 import supertest from 'supertest';
 import mongoose from "mongoose";
-//import configs from "../../src/config.js";
-await mongoose.connect("mongodb+srv://eleonoratubio:jT0Z0SKpSILu6qvz@cluster0.4gfsjbp.mongodb.net/tests?retryWrites=true&w=majority");
-//await mongoose.connect(configs.mongoUrl)
+import configs from "../../src/config.js";
+//await mongoose.connect("mongodb+srv://eleonoratubio:jT0Z0SKpSILu6qvz@cluster0.4gfsjbp.mongodb.net/tests?retryWrites=true&w=majority");
+await mongoose.connect(configs.mongoUrl)
 
 //import Users from '../../src/dao/dbManager/users.db.js';
 import usersModel from '../../src/dao/dbManager/models/users.model.js';
